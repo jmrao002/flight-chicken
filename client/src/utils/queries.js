@@ -6,10 +6,10 @@ export const GET_ME = gql`
       _id
       username
       email
-      bookCount
-      savedBooks {
+      routeCount
+      savedRoutes {
         # _id
-        bookId
+        routeId
         authors
         title
         description

@@ -9,19 +9,19 @@ import {
 import { useMutation, useQuery } from "@apollo/react-hooks";
 // import the query we're going to execute and the mutation
 import { GET_ME } from "../utils/queries";
-import { REMOVE_BOOK } from "../utils/mutations";
+import { REMOVE_ROUTE } from "../utils/mutations";
 
 import Auth from "../utils/auth";
-import { removeBookId } from "../utils/localStorage";
+import { removeRouteId } from "../utils/localStorage";
 
-const SavedBooks = () => {
+const savedRoutes = () => {
   // execute the query on component load
   const { loading, data } = useQuery(GET_ME);
-  const [removeBook, { error }] = useMutation(REMOVE_BOOK);
-// check to see if data is there and if not then return an empty array
+  const [removeRoute, { error }] = useMutation(REMOVE_ROUTE);
+  // check to see if data is there and if not then return an empty array
   const userData = data?.me || [];
 
-  const handleDeleteBook = async (bookId) => {
+  const handleDeleteroute = async (routeId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
     if (!token) {
@@ -29,11 +29,11 @@ const SavedBooks = () => {
     }
 
     try {
-      const { data } = await removeBook({
-        variables: { bookId },
+      const { data } = await removeRoute({
+        variables: { routeId },
       });
 
-      removeBookId(bookId);
+      removeRouteId(routeId);
     } catch (error) {
       console.error(error);
     }
@@ -47,37 +47,37 @@ const SavedBooks = () => {
     <>
       <Jumbotron fluid className="text-light bg-dark">
         <Container>
-          <h1>Viewing saved books!</h1>
+          <h1>Viewing saved routes!</h1>
         </Container>
       </Jumbotron>
       <Container>
         <h2>
-          {userData.savedBooks.length
-            ? `Viewing ${userData.savedBooks.length} saved ${
-                userData.savedBooks.length === 1 ? "book" : "books"
+          {userData.savedRoutes.length
+            ? `Viewing ${userData.savedRoutes.length} saved ${
+                userData.savedRoutes.length === 1 ? "route" : "routes"
               }:`
-            : "You have no saved books!"}
+            : "You have no saved routes!"}
         </h2>
         <CardColumns>
-          {userData.savedBooks.map((book) => {
+          {userData.savedRoutes.map((route) => {
             return (
-              <Card key={book.bookId} border="dark">
-                {book.image ? (
+              <Card key={route.routeId} border="dark">
+                {route.image ? (
                   <Card.Img
-                    src={book.image}
-                    alt={`The cover for ${book.title}`}
+                    src={route.image}
+                    alt={`The cover for ${route.title}`}
                     variant="top"
                   />
                 ) : null}
                 <Card.Body>
-                  <Card.Title>{book.title}</Card.Title>
-                  <p className="small">Authors: {book.authors}</p>
-                  <Card.Text>{book.description}</Card.Text>
+                  <Card.Title>{route.title}</Card.Title>
+                  <p className="small">Authors: {route.authors}</p>
+                  <Card.Text>{route.description}</Card.Text>
                   <Button
                     className="btn-block btn-danger"
-                    onClick={() => handleDeleteBook(book.bookId)}
+                    onClick={() => handleDeleteroute(route.routeId)}
                   >
-                    Delete this Book!
+                    Delete this route!
                   </Button>
                 </Card.Body>
               </Card>
@@ -89,4 +89,4 @@ const SavedBooks = () => {
   );
 };
 
-export default SavedBooks;
+export default savedRoutes;
