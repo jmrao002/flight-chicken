@@ -50,8 +50,10 @@ export const deleteroute = (routeId, token) => {
   });
 };
 
-// make a search to google routes api
-// https://www.googleapis.com/routes/v1/volumes?q=harry+potter
-export const searchGoogleroutes = (query) => {
-  return fetch(`https://www.googleapis.com/routes/v1/volumes?q=${query}`);
+// make a search to skyscanner API
+// https://rapidapi.com/skyscanner/api/skyscanner-flight-search
+export const searchSkyScannerRoutes = (query) => {
+  return fetch(
+    `https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browseroutes/v1.0/US/USD/en-US/${query}`
+  );
 };

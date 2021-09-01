@@ -11,7 +11,7 @@ const routeSchema = new Schema({
     type: String,
     required: true,
   },
-  // saved route id from Googleroutes
+  // saved route id from SkyScanner
   routeId: {
     type: String,
     required: true,

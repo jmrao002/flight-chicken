@@ -12,7 +12,7 @@ import {
 import { SAVE_ROUTE } from "../utils/mutations";
 import { useMutation } from "@apollo/react-hooks";
 import Auth from "../utils/auth";
-import { saveroute, searchGoogleroutes } from "../utils/API";
+import { saveroute, searchSkyScannerRoutes } from "../utils/API";
 import { saverouteIds, getSavedrouteIds } from "../utils/localStorage";
 
 const searchRoutes = () => {
@@ -36,7 +36,7 @@ const searchRoutes = () => {
     }
 
     try {
-      const response = await searchGoogleroutes(searchInput);
+      const response = await searchSkyScannerRoutes(searchInput);
 
       if (!response.ok) {
         throw new Error("Something went wrong!");
