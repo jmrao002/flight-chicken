@@ -21,8 +21,8 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    // set savedRoutes to be an array of data that adheres to the routeSchema
-    savedRoutes: [routeSchema],
+    // set SavedRoutes to be an array of data that adheres to the routeSchema
+    SavedRoutes: [routeSchema],
   },
   // set this to use virtual below
   {
@@ -49,7 +49,7 @@ userSchema.methods.isCorrectPassword = async function (password) {
 
 // when we query a user, we'll also get another field called `routeCount` with the number of saved routes we have
 userSchema.virtual("routeCount").get(function () {
-  return this.savedRoutes.length;
+  return this.SavedRoutes.length;
 });
 
 const User = model("User", userSchema);

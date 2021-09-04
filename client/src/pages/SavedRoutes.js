@@ -14,7 +14,7 @@ import { REMOVE_ROUTE } from "../utils/mutations";
 import Auth from "../utils/auth";
 import { removeRouteId } from "../utils/localStorage";
 
-const savedRoutes = () => {
+const SavedRoutes = () => {
   // execute the query on component load
   const { loading, data } = useQuery(GET_ME);
   const [removeRoute, { error }] = useMutation(REMOVE_ROUTE);
@@ -52,14 +52,14 @@ const savedRoutes = () => {
       </Jumbotron>
       <Container>
         <h2>
-          {userData.savedRoutes.length
-            ? `Viewing ${userData.savedRoutes.length} saved ${
-                userData.savedRoutes.length === 1 ? "route" : "routes"
+          {userData.SavedRoutes.length
+            ? `Viewing ${userData.SavedRoutes.length} saved ${
+                userData.SavedRoutes.length === 1 ? "route" : "routes"
               }:`
             : "You have no saved routes!"}
         </h2>
         <CardColumns>
-          {userData.savedRoutes.map((route) => {
+          {userData.SavedRoutes.map((route) => {
             return (
               <Card key={route.routeId} border="dark">
                 {route.image ? (
@@ -89,4 +89,4 @@ const savedRoutes = () => {
   );
 };
 
-export default savedRoutes;
+export default SavedRoutes;

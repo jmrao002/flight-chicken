@@ -15,7 +15,7 @@ const typeDefs = gql`
     username: String
     email: String
     routeCount: Int
-    savedRoutes: [route]
+    SavedRoutes: [route]
   }
   input savedroute {
     description: String

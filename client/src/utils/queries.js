@@ -7,7 +7,7 @@ export const GET_ME = gql`
       username
       email
       routeCount
-      savedRoutes {
+      SavedRoutes {
         # _id
         routeId
         authors

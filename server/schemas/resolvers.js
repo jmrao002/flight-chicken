@@ -51,7 +51,7 @@ const resolvers = {
 
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { savedRoutes: args.input } },
+          { $addToSet: { SavedRoutes: args.input } },
           { new: true }
         );
 
@@ -65,7 +65,7 @@ const resolvers = {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { savedRoutes: { routeId: args.routeId } } },
+          { $pull: { SavedRoutes: { routeId: args.routeId } } },
           { new: true }
         );
 

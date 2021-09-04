@@ -9,7 +9,7 @@ export const LOGIN_USER = gql`
         username
         email
         routeCount
-        savedRoutes {
+        SavedRoutes {
           routeId
           title
           description
@@ -31,7 +31,7 @@ export const ADD_USER = gql`
         username
         email
         routeCount
-        savedRoutes {
+        SavedRoutes {
           routeId
           title
           description
@@ -51,7 +51,7 @@ export const SAVE_ROUTE = gql`
       username
       email
       routeCount
-      savedRoutes {
+      SavedRoutes {
         # _id
         routeId
         title
@@ -71,7 +71,7 @@ export const REMOVE_ROUTE = gql`
       username
       email
       routeCount
-      savedRoutes {
+      SavedRoutes {
         # _id
         routeId
         title

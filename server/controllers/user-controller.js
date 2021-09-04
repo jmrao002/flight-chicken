@@ -49,14 +49,14 @@ module.exports = {
     const token = signToken(user);
     res.json({ token, user });
   },
-  // save a route to a user's `savedRoutes` field by adding it to the set (to prevent duplicates)
+  // save a route to a user's `SavedRoutes` field by adding it to the set (to prevent duplicates)
   // user comes from `req.user` created in the auth middleware function
   async saveRoute({ user, body }, res) {
     console.log(user);
     try {
       const updatedUser = await User.findOneAndUpdate(
         { _id: user._id },
-        { $addToSet: { savedRoutes: body } },
+        { $addToSet: { SavedRoutes: body } },
         { new: true, runValidators: true }
       );
       return res.json(updatedUser);
@@ -65,11 +65,11 @@ module.exports = {
       return res.status(400).json(err);
     }
   },
-  // remove a route from `savedRoutes`
+  // remove a route from `SavedRoutes`
   async deleteRoute({ user, params }, res) {
     const updatedUser = await User.findOneAndUpdate(
       { _id: user._id },
-      { $pull: { savedRoutes: { routeId: params.routeId } } },
+      { $pull: { SavedRoutes: { routeId: params.routeId } } },
       { new: true }
     );
     if (!updatedUser) {

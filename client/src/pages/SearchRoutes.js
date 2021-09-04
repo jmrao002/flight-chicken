@@ -15,7 +15,7 @@ import Auth from "../utils/auth";
 import { saveroute, searchSkyScannerRoutes } from "../utils/API";
 import { saverouteIds, getSavedrouteIds } from "../utils/localStorage";
 
-const searchRoutes = () => {
+const SearchRoutes = () => {
   const [searchedroutes, setSearchedroutes] = useState([]);
   const [searchInput, setSearchInput] = useState("");
 
@@ -155,4 +155,4 @@ const searchRoutes = () => {
   );
 };
 
-export default searchRoutes;
+export default SearchRoutes;
